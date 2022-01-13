@@ -1,11 +1,14 @@
+import { useSelector } from "react-redux";
+import Login from "./components/Login";
+
 function App() {
-  return (
-    <div className="App">
-      <h1 className="text-3xl font-bold underline text-red-600">
-        Hello World!
-      </h1>
-    </div>
-  );
+  const jwtToken = useSelector((state) => state.jwtToken);
+
+  // if (jwtToken === "") {
+  //   return <Login />;
+  // }
+
+  return <div className="App"></div>;
 }
 
 export default App;

@@ -4,4 +4,7 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  fontFamily: {
+    manrope: ["Manrope", "sans-serif"],
+  },
 };

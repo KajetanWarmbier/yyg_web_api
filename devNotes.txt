@@ -1,0 +1,71 @@
+import { useState, useEffect } from "react";
+import Axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { setToken, clearToken } from "./actions";
+
+function App() {
+  const [userJWT, setUserJWT] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const loginUser = () => {
+    Axios.post("http://localhost:5000/users/login", {
+      email: email,
+      password: password,
+    }).then((response) => {
+      setUserJWT(response.data.token);
+      console.log(response.data.message);
+      dispatch(setToken(response.data.token));
+    });
+    setPassword("");
+  };
+
+  const jwtToken = useSelector((state) => state.jwtToken);
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    dispatch(clearToken());
+  };
+
+  return (
+    <div className="App">
+      <div className="">
+        <input
+          type="text"
+          placeholder="Email..."
+          onChange={(event) => {
+            setEmail(event.target.value);
+          }}
+        />
+        <input
+          type="text"
+          placeholder="Password..."
+          onChange={(event) => {
+            setPassword(event.target.value);
+          }}
+        />
+        <button onClick={loginUser}>LOGIN</button>
+      </div>
+      <div>
+        <h6>JWT: {userJWT}</h6>
+      </div>
+      <div>
+        <button className="bg-slate-400" onClick={logout}>
+          wyloguj
+        </button>
+        <h5>jwtToken: {jwtToken}</h5>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+LOGOUT BUTTON
+
+import {useDispatch} from "react-redux";
+import { clearToken } form "./actions";
+const dispatch = useDispatch();
+const logout = () => {
+    dispatch(clearToken());
+}

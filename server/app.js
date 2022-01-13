@@ -2,6 +2,14 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cors = require("cors");
+
+//install express
+const app = express();
+
+//take data from body HTTP
+app.use(bodyParser.json());
+app.use(cors());
 
 //enviroment variables
 require("dotenv").config();
@@ -21,17 +29,11 @@ mongoose.connect(
 const pictureRoutes = require("./api/routes/pictures");
 const userRoutes = require("./api/routes/users");
 
-//install express
-const app = express();
-
 //share pictures folder
 app.use("/uploads", express.static("uploads"));
 
 //start logger
 app.use(morgan("combined"));
-
-//take data from body HTTP
-app.use(bodyParser.json());
 
 //add routes
 app.use("/pictures", pictureRoutes);
