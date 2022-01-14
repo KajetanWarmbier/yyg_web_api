@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
-import { setToken } from "../actions";
+import { useDispatch } from "react-redux";
+import { setToken } from "../../actions";
 
 const Login = () => {
   const [email, setEmail] = useState("");
