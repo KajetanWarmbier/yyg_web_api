@@ -1,17 +1,18 @@
-// import { useSelector } from "react-redux";
-// import Login from "./components/LoginScreen/Login";
+import { useSelector } from "react-redux";
+import Login from "./components/LoginScreen/Login";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import AddPicture from "./components/AddPicture/AddPicture";
 import HomeMain from "./components/HomeScreen/HomeMain";
 import Nav from "./components/Navbar/Nav";
 import PicMain from "./components/PicturesScreen/PicMain";
 import UsersMain from "./components/UsersScreen/UsersMain";
 
 function App() {
-  // const jwtToken = useSelector((state) => state.jwtToken);
+  const jwtToken = useSelector((state) => state.jwtToken);
 
-  // if (jwtToken === "") {
-  //   return <Login />;
-  // }
+  if (jwtToken === "") {
+    return <Login />;
+  }
 
   return (
     <Router>
@@ -22,6 +23,7 @@ function App() {
             <Route exact path="/" element={<HomeMain />} />
             <Route exact path="/pictures" element={<PicMain />} />
             <Route exact path="/users" element={<UsersMain />} />
+            <Route exact path="/pictures/addpicture" element={<AddPicture />} />
           </Routes>
         </div>
       </div>

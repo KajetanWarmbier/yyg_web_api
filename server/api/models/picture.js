@@ -6,6 +6,7 @@ const pictureSchema = mongoose.Schema({
   type: String,
   description: String,
   picData: String,
+  imageUrl: String,
   image: String,
 });
 

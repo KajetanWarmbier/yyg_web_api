@@ -21,6 +21,7 @@ exports.pictures_add_new = (req, res, next) => {
     type: req.body.type,
     description: req.body.description,
     picData: req.body.picData,
+    imageUrl: req.body.imageUrl,
     image: req.file.path,
   });
 
